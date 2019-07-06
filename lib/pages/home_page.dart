@@ -1,5 +1,7 @@
 import 'package:carrinha_da_lu/pages/accounts_page.dart';
 import 'package:carrinha_da_lu/pages/dashboard_page.dart';
+import 'package:carrinha_da_lu/pages/new_sale_page.dart';
+import 'package:carrinha_da_lu/pages/sales_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -13,6 +15,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _children = [
     DashboardPage(),
     AccountsPage(),
+    SalesPage(),
   ];
 
   void onTabTapped(int index) {
@@ -24,14 +27,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add_shopping_cart),
         onPressed: () {
-          print("Nova venda");
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => NewSalePage(),
+            ),
+          );
         },
       ),
-      
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: onTabTapped,
@@ -43,6 +50,10 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.people),
             title: Text('Contas'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.store),
+            title: Text('Vendas'),
           ),
         ],
       ),

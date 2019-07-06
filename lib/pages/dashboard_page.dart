@@ -1,3 +1,4 @@
+import 'package:carrinha_da_lu/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -18,7 +19,12 @@ class _DashboardPageState extends State<DashboardPage> {
           IconButton(
             icon: Icon(Icons.settings),
             onPressed: () {
-              print("Configurações");
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SettingsPage(),
+                ),
+              );
             },
           )
         ],
